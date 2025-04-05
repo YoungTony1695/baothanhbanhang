@@ -129,11 +129,11 @@ if ($qty!=0)
 	</tr>
 	<tr>
 		<th>VAT : </th>
-		<td><?php echo $fm->format_currency($i*3/100); ?>VND</td>
+		<td><?php echo $fm->format_currency($i*10/100); ?>VND</td>
 	</tr>
 	<tr>
 		<th>Tổng tiền thanh toán :</th>
-		<td><?php echo $fm->format_currency($i*3/100+$i); ?>VND </td>
+		<td><?php echo $fm->format_currency($i*10/100+$i); ?>VND </td>
 	</tr>
 </table>
 <?php

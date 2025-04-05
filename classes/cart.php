@@ -25,29 +25,42 @@
 			$quantity = mysqli_real_escape_string($this->db->link, $quantity);
 			$id = mysqli_real_escape_string($this->db->link, $id);
 			$sId = session_id();
-
+		
 			$query = "SELECT * FROM tbl_product WHERE productId = '$id' ";
-			$result = $this->db->select($query)->fetch_assoc();
+			$result = $this->db->select($query);
+			
+			// Kiểm tra nếu truy vấn không thành công
+			if ($result === false) {
+				$alert = "<span class='error'>Lỗi truy vấn cơ sở dữ liệu</span>";
+				return $alert;
+			}
+		
+			$result = $result->fetch_assoc();
 			$productName = $result["productName"];
 			$price = $result["price"];
 			$image = $result["image"];
+			
+			// Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng
 			$checkcart = "SELECT * FROM tbl_cart WHERE productId = '$id' AND sid = '$sId' ";
- 				$check_cart = $this->db->select($checkcart);
- 				if(mysqli_num_rows($check_cart)>0){
- 					$alert = "<span>product already added</span>";
- 					return $alert;
- 				}
-			else
-			{
-				$query_insert = "INSERT INTO tbl_cart(productId,productName,quantity,sId,price,image) VALUES('$id','$productName','$quantity','$sId','$price','$image' ) ";
+			$check_cart = $this->db->select($checkcart);
+			
+			if ($check_cart !== false && mysqli_num_rows($check_cart) > 0) {
+				$alert = "<span>product already added</span>";
+				return $alert;
+			} else {
+				// Thêm sản phẩm vào giỏ hàng
+				$query_insert = "INSERT INTO tbl_cart(productId, productName, quantity, sId, price, image) 
+								 VALUES('$id', '$productName', '$quantity', '$sId', '$price', '$image')";
 				$insert_cart = $this->db->insert($query_insert);
-				if($result){
-					header('Location:cart.php');
-				}else {
-					header('Location:404.php');
+				
+				if ($insert_cart) {
+					header('Location: cart.php');
+				} else {
+					header('Location: 404.php');
 				}
 			}
 		}
+		
 		public function get_product_cart()
 		{
 			$sId = session_id();
@@ -178,7 +191,7 @@
 				$msg = "<span class='success'>xác nhận thành công</span> ";
 				return $msg;
 			}else {
-				$msg = "<span class='erorr'> xác nhận thành công</span> ";
+				$msg = "<span class='erorr'>Không thành công</span> ";
 				return $msg;
 			}
 		}

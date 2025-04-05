@@ -114,18 +114,18 @@
 								<?php 
 								if($result['status']==0){
 								 ?>
-								<a href="?shiftid=<?php echo $result['orderid']; ?>&qty=<?php echo $result['quantity']; ?>&proid=<?php echo $result['productId']; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date_order']; ?>&cusid=<?php echo $result['cusId']; ?>">Đang chờ xử lý</a>
+								<a href="?shiftid=<?php echo $result['orderId']; ?>&qty=<?php echo $result['quantity']; ?>&proid=<?php echo $result['productId']; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date_order']; ?>&cusid=<?php echo $result['cusId']; ?>">Đang chờ xử lý</a>
 									
 								 
 								<?php 
 								}elseif($result['status']==1) {
 
 								 ?>
-								<a href="?confirmid=<?php echo $result['orderid'] ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date_order'] ?>">Gửi hàng</a>
+								<a href="?confirmid=<?php echo $result['orderId'] ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date_order'] ?>">Gửi hàng</a>
 								 <?php 
 								}elseif ($result['status']==2) {
 									?>
-									<a href="?delid=<?php echo $result['orderid'];?>&price=<?php echo $result['price'];?>&time=<?php echo $result['date_order'];?>">Xóa đơn</a>
+									<a href="?delid=<?php echo $result['orderId'];?>&price=<?php echo $result['price'];?>&time=<?php echo $result['date_order'];?>">Xóa đơn</a>
 								
 
 							</td>

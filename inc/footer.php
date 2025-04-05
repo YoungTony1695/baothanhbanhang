@@ -7,9 +7,9 @@
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Liên hệ chúng tôi</h4>
 						<ul>
-							<li><span>ĐT:0931930885</span></li>
-							<li><span>Email:xuannguyenngo@gmail.com</span></li>
-							<li><span>Đc:12 kiệt 289 Bùi thị Xuân,TP Huế</span></li>
+							<li><span>Điện Thoại: 0788 940 940</span></li>
+							<li><span>Email:Baothanhnguyen1695@gmail.com</span></li>
+							<li><span>Đc:176 Trần Phú,TP Huế</span></li>
 						</ul>
 						<div class="social-icons">
 							<h4>Theo dõi chúng tôi</h4>
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="copy_right">
-				<p>DIY HUẾ </p>
+				<p>Bảo Thạnh Nguyễn </p>
 		   </div>
      </div>
     </div>
